@@ -9,15 +9,15 @@
                 </a>
             </li>
             <li class="single-nav-wrapper">
-                <a href="{{ route('user.view') }}" class="menu-item">
+                <a href="{{ route('user.admin.view') }}" class="menu-item">
                     <span class="left-icon"><i class="fas fa-users"></i></span>
                     <span class="menu-text">View Admin User</span>
                 </a>
             </li>
             <li class="single-nav-wrapper">
-                <a href="{{ route('employee.register') }}" class="menu-item">
+                <a href="{{ route('employee.view') }}" class="menu-item">
                     <span class="left-icon"><i class="fas fa-user"></i></span>
-                    <span class="menu-text">Add User</span>
+                    <span class="menu-text">View Emmployees</span>
                 </a>
             </li>
             <li class="single-nav-wrapper">

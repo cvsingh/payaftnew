@@ -81,7 +81,8 @@ class EmployeeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'usertype' => $request->usertype,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make('Welcome@123'),
+            //  'password' => Hash::make($request->password),
             'created_at' => Carbon::now(),
 
         ]);
@@ -92,5 +93,35 @@ class EmployeeController extends Controller
         );
 
         return redirect()->route('admin.dashboard')->with($notification);
+    }
+
+    public function ChangePassword()
+    {
+        return view('employee.body.change_password');
+    }
+
+    public function UpdatePassword(Request $request)
+    {
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+
+        $hashedPassword = Auth::guard('employee')->user()->password;
+
+        if (Hash::check($request->oldpassword, $hashedPassword)) {
+            $user = Employee::find(Auth::guard('employee')->user()->id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+            Auth::guard('employee')->logout();
+
+            return redirect()->route('employee_login_from')->with('error', 'Password changed suceessfully.');
+        } else {
+            $notification = array(
+                'message' => 'Current Password is invalid.',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
     }
 }

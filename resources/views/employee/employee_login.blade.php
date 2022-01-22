@@ -38,7 +38,7 @@
             <div class="login_page center_container">
                 <div class="center_content">
                     <div class="logo">
-                        <img src="{{ asset('panel/assets/images/logo.png') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('panel/assets/images/logo.jpeg') }}" alt="" class="img-fluid">
                     </div>
 
                     @if (Session::has('error'))

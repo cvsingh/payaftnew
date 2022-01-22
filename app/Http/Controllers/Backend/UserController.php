@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -15,15 +16,21 @@ class UserController extends Controller
         return view('user.index');
     }
 
-    public function UserView()
+    public function AdminView()
     {
 
-        // $allData = User::all();
         $data['allData'] = User::all();
         return view('backend.user.view_user', $data);
     }
 
-    public function UserAdd()
+    public function EmployeeView()
+    {
+
+        $data['allData'] = Employee::all();
+        return view('backend.user.view_employee', $data);
+    }
+
+    public function AdminAdd()
     {
         return view('backend.user.user_add');
     }
@@ -56,6 +63,12 @@ class UserController extends Controller
         return view('backend.user.edit_user', compact('editData'));
     }
 
+    public function EmployeeEdit($id)
+    {
+        $editData = Employee::find($id);
+        return view('backend.user.edit_employee', compact('editData'));
+    }
+
     public function UserUpdate(Request $request, $id)
     {
         $data = User::find($id);
@@ -70,6 +83,27 @@ class UserController extends Controller
         );
 
         return redirect()->route('user.view')->with($notification);
+    }
+
+    public function EmployeeUpdate(Request $request, $id)
+    {
+        $data = Employee::find($id);
+        $data->salutation = $request->salutation;
+        $data->usertype = $request->usertype;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->designation = $request->designation;
+        $data->date_of_birth = $request->date_of_birth;
+        $data->date_coc = $request->date_coc;
+
+        $data->save();
+
+        $notification = array(
+            'message' => 'Employee Updated Successfully.',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('employee.view')->with($notification);
     }
 
     public function UserDelete($id)

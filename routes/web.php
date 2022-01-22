@@ -36,6 +36,8 @@ Route::prefix('admin')->group(function () {
 /* ----------------------------Employee Route --------------------*/
 
 Route::prefix('employee')->group(function () {
+    Route::get('/change/password', [EmployeeController::class, 'ChangePassword'])->name('change.password');
+    Route::post('/update/password', [EmployeeController::class, 'UpdatePassword'])->name('password.update');
     Route::get('/login', [EmployeeController::class, 'Index'])->name('employee_login_from');
     Route::post('/login/owner', [EmployeeController::class, 'Login'])->name('employee.login');
     Route::get('/dashboard', [EmployeeController::class, 'Dashboard'])->name('employee.dashboard')->middleware('employee');
@@ -61,8 +63,11 @@ Route::prefix('letter')->group(function () {
 /* ----------------------------User Route --------------------*/
 
 Route::prefix('users')->group(function () {
-    Route::get('/view', [UserController::class, 'UserView'])->name('user.view');
-    Route::get('/add', [UserController::class, 'UserAdd'])->name('users.add');
+    Route::get('/admin/view', [UserController::class, 'AdminView'])->name('user.admin.view');
+    Route::get('/employee/view', [UserController::class, 'EmployeeView'])->name('employee.view');
+    Route::get('/employee/edit/{id}', [UserController::class, 'EmployeeEdit'])->name('employee.edit');
+    Route::post('/employee/update/{id}', [UserController::class, 'EmployeeUpdate'])->name('employee.update');
+    Route::get('/admin/add', [UserController::class, 'AdminAdd'])->name('users.admin.add');
     Route::post('/store', [UserController::class, 'UserStore'])->name('users.store');
     Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('users.edit');
     Route::get('/delete/{id}', [UserController::class, 'UserDelete'])->name('users.delete');

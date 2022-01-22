@@ -14,8 +14,8 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Admin User List</h3>
-                            <a href="{{ route('users.admin.add') }}" style="float:right;" class="btn btn-rounded btn-success mb-5">Add Admin User</a>
+                            <h3 class="box-title">Employee List</h3>
+                            <a href="{{ route('employee.register') }}" style="float:right;" class="btn btn-rounded btn-success mb-5">Add Employee</a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -38,8 +38,8 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
-                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Edit</a>
-                                                <a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                                                <a href="{{ route('employee.edit', $user->id) }}" class="btn btn-info">Edit</a>
+                                                <!--      <a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger" id="delete">Delete</a> -->
                                             </td>
                                         </tr>
 

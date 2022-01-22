@@ -50,6 +50,9 @@
                                 <option value="Lt Gen(Retd)">Lt Gen(Retd)</option>
                                 <option value="Air Marshal">Air Marshal</option>
                                 <option value="Dr.">Dr.</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+
                             </select>
                             <span class="icon_soon_bottom_right"><i class="fas fa-user-tag"></i></span>
                         </div>
@@ -77,6 +80,7 @@
                                 <option value="JR">JR</option>
                                 <option value="DR">DR</option>
                                 <option value="AR">AR</option>
+                                <option value="SO">SO</option>
                                 <option value="tsk">Task</option>
                             </select>
                             <span class="icon_soon_bottom_right"><i class="fas fa-user-tag"></i></span>
@@ -118,7 +122,7 @@
                             <input type="date" class="form-control" name="date_coc" placeholder="Date of Completion Of Contract">
                             <span class="icon_soon_bottom_right"><i class="fas fa-calendar-day"></i></span>
                         </div>
-                        <div class="form-group icon_parent">
+                        <!-- <div class="form-group icon_parent">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Password">
 
@@ -129,7 +133,7 @@
                             <label for="rtpassword">Re-type Password</label>
                             <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
                             <span class="icon_soon_bottom_right"><i class="fas fa-unlock"></i></span>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <a class="registration" href="{{ route('admin.dashboard') }} ">Already have an account or back</a><br>
                             <button type="submit" class="btn btn-blue">Signup</button>
